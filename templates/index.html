@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../static/house.png">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"> -->
+
+    <title>Boston House Price</title>
+</head>
+
+<body>
+  <nav class="navbar h-nav">
+    <ul class="nav-list v-class">
+      <li><a href="#"><p>Home</p></a></li>
+      <li><a href="#parameter"><p>Project Parameters</p></a></li>
+      <li><a href="#calculate"><p>Calculate Cost</p></a></li>
+      <li><a href="#about"><p>About Us</p></a></li>
+    </ul>
+  </nav>
+
+    <section class="background firstSection">
+        <div class="box-main">
+            <div class="firsthalf">
+                <p class="text-big">BOSTON</p>
+                <p class="text-Small"> Boston is a city in the northeastern United States, located in the state of
+                    Massachusetts. It is known for its rich history,
+                    world-renowned universities, and thriving sports culture. Some of its most famous landmarks include
+                    the Freedom Trail, Fenway Park, and Harvard University.
+                    Boston is also home to a diverse population and a vibrant arts and culture scene. Its economy is
+                    driven by industries such as education, healthcare, finance, and technology.</p>
+                <p>
+
+                </p>
+
+            </div>
+            <!-- <div class="secondhalf">
+                <a href="https://www.google.com/maps/place/Boston,+MA,+USA/@42.31435,-70.970284,11z/data=!3m1!4b1!4m6!3m5!1s0x89e3652d0d3d311b:0x787cbf240162e8a0!8m2!3d42.3600825!4d-71.0588801!16zL20vMDFjeF8"
+                    target="_blank"><img src="../static/map.png" alt="Map"></a>
+
+            </div> -->
+        <!-- <div class="column"> -->
+        <div class="secondhalf">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d188820.5492695243!2d-70.97028399999999!3d42.31434995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e3652d0d3d311b%3A0x787cbf240162e8a0!2sBoston%2C%20MA%2C%20USA!5e0!3m2!1sen!2sin!4v1683372427454!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      <!-- </div> -->
+
+        </div>
+    </section>
+
+
+    <section class="section" id="parameter">
+        <div class="paras"><br><br>
+            <h3 class="sectiontag text-big large">Boston House Price Parameters</h3>
+            <p class="bolder">
+                Project Content:
+            </p>
+            <p class="sectionsubtag text-Small" style="font-size: 1.5vw;">
+                Each record in the database describes a Boston suburb or town. The data was drawn from the Boston
+                Standard Metropolitan Statistical
+                Area (SMSA) in 1970. The attributes are deﬁned as follows (taken from the UCI Machine Learning
+                Repository).
+            </p><br>
+            <strong>
+            <p>The parameters for the machine learning model are as follows</p>
+         </strong>
+
+    </section>
+
+
+    <section class="section section-left">
+        <div class="paras">
+            <br>
+            <!-- <p class="sectionsubtag text-Small"> -->
+                <ul>
+                    <li><strong>CRIM:</strong> per capita crime rate by town</li>
+                    <li><strong>ZN:</strong> proportion of residential land zoned for lots over 25,000 sq.ft.</li>
+                    <li><strong>INDUS:</strong> proportion of non-retail business acres per town</li>
+                    <li><strong>CHAS:</strong> Charles River dummy variable (1 if tract bounds river; 0 otherwise)</li>
+                    <li><strong>NOX:</strong> nitric oxides concentration (parts per 10 million)</li>
+                    <li><strong>RM:</strong> average number of rooms per dwelling</li>
+                    <li><strong>AGE:</strong> proportion of owner-occupied units built prior to 1940</li>
+                    <li><strong>DIS:</strong> weighted distances to five Boston employment centers</li>
+                    <li><strong>RAD:</strong> index of accessibility to radial highways</li>
+                    <li><strong>TAX:</strong> full-value property-tax rate per $10,000</li>
+                    <li><strong>PTRATIO:</strong> pupil-teacher ratio by town</li>
+                    <li><strong>B:</strong> 1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town</li>
+                    <li><strong>LSTAT:</strong> % lower status of the population</li>
+                    <li><strong>MEDV:</strong> median value of owner-occupied homes in $1000s</li>
+                  </ul>
+        </div>
+
+
+    </section>
+
+    <section class="contact" id="calculate"><br><br><br>
+        <h1 class="textcenter sectiontag text-big">Calculate Property Price</h1>
+        
+        <div class="form">
+          <form action="{{ url_for('predict')}}" method="post">
+            <div class="form-group">
+              <label for="crime_rate">Crime Rate:</label>
+              <input class="form-input" type="text" name="CRIM" id="crime_rate" placeholder="Enter crime rate" required>
+            </div>
+            <div class="form-group">
+              <label for="land_zone">Land Zone:</label>
+              <input class="form-input" type="text" name="ZN" id="land_zone" placeholder="Enter land zone" required>
+            </div>
+            <div class="form-group">
+              <label for="industry">Industry Proximity:</label>
+              <input class="form-input" type="text" name="INDUS" id="industry" placeholder="Enter industry proximity" required>
+            </div>
+            <div class="form-group">
+              <label for="river">River Proximity:</label>
+              <input class="form-input" type="text" name="CHAS" id="river" placeholder="Enter river proximity" required>
+            </div>
+            <div class="form-group">
+              <label for="pollution">Air Pollution:</label>
+              <input class="form-input" type="text" name="NOX" id="pollution" placeholder="Enter air pollution" required>
+            </div>
+            <div class="form-group">
+              <label for="rooms">Number of Rooms:</label>
+              <input class="form-input" type="text" name="RM" id="rooms" placeholder="Enter number of rooms" required>
+            </div>
+            <div class="form-group">
+              <label for="age">Property Age:</label>
+              <input class="form-input" type="text" name="AGE" id="age" placeholder="Enter property age" required>
+            </div>
+        
+            <div class="form-group">
+              <label for="distance">Distance to Employment:</label>
+              <input class="form-input" type="text" name="DIS" id="distance" placeholder="Enter distance to employment" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="highway">Highway Accessibility:</label>
+              <input class="form-input" type="text" name="RAD" id="highway" placeholder="Enter highway accessibility" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="tax">Property Tax Rate:</label>
+              <input class="form-input" type="text" name="TAX" id="tax" placeholder="Enter property tax rate" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="teacher_ratio">Teacher-Student Ratio:</label>
+              <input class="form-input" type="text" name="PTRATIO" id="teacher_ratio" placeholder="Enter teacher-student ratio" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="ethnicity">Ethnicity Ratio:</label>
+              <input class="form-input" type="text" name="B" id="ethnicity" placeholder="Enter ethnicity ratio" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="lower_status">Lower Status of the Population:</label>
+              <input class="form-input" type="text" name="LSTAT" id="lower_status" placeholder="Enter % of lower status" required>
+            </div>
+            
+            <br><hr><br>
+            
+            <button type="submit" class="btn btn-sm btn-dark calculate"><p>Calculate Price</p></button> <br><br>
+            
+            {% if prediction_text %}
+            <h1 style="font-family: Roboto;font-weight: 500; font-size: 1.5vw;text-align: center; color: tomato;">{{ prediction_text }}</h1> <br><br>
+            {% endif %}
+            
+            {% if error %}
+            <p style="color:red;font-size:1.5vw;text-align:center;">{{ error }}</p>
+            {% endif %}
+            
+          </form>
+        </div>
+
+      </section>
+      
+
+          
+        <section class="rightsection" id="about" >
+          
+            <div class="members">
+                <br>
+                <h2 class="sectiontag text-big" style="font-weight: 550;"> About Us</h2>
+                <p style="font-size: 25px;">Second Year students of AI & Data Science Department (Group A) </p>
+                <p style="font-style: italic;font-size: 20px;color: purple;">D Y Patil College of Engineering, Pune</p><br>
+                    <p> 1. Mr. Kunal Sharma   [SEAIDB65]</p>
+                    <p > 2. Mr. Sahil Patil   [SEAIDB57]</p>
+                    <p > 3. Mr. Rakesh Sabale   [SEAIDB52]</p>
+                    <p > 4. Mr. Sachin Kant   [SEAIDB51]</p>
+                    <p > 5. Ms. Ritika Pasari  [SEAIDB41]</p>
+                    <br><br>
+            </div>
+        </section>
+    </section>
+
+    <footer style="background-color: transparent; padding: 20px;text-align: center; bottom: 0; width: 97%;">
+      Made with <svg viewBox="0 0 1792 1792" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="height: 0.8rem;"><path d="M896 1664q-26 0-44-18l-624-602q-10-8-27.5-26T145 952.5 77 855 23.5 734 0 596q0-220 127-344t351-124q62 0 126.5 21.5t120 58T820 276t76 68q36-36 76-68t95.5-68.5 120-58T1314 128q224 0 351 124t127 344q0 221-229 450l-623 600q-18 18-44 18z" fill="#e25555"></path></svg>
+      By <strong style="color: tomato;">Team A</strong>
+  </footer>
+  
+  <style>
+      footer {
+          font-family: 'Catamaran', 'Hammersmith One', sans-serif;
+          border-bottom: 5px solid red;
+      }
+  </style>
+    
+</body>
+</html>
+
+
+
+<!-- JS to scroll though navbar -->
+
+<script>
+ 
+ const navLinks = document.querySelectorAll(".nav-list a");
+
+navLinks.forEach(link => {
+  link.addEventListener("click", clickHandler);
+});
+
+function clickHandler(e) {
+  e.preventDefault();
+  const href = this.getAttribute("href");
+
+  if (href === "#") {
+    // Scroll to the top of the page
+    scroll({
+      top: 0,
+      behavior: "smooth"
+    });
+  } else {
+    // Scroll to the section with the matching ID
+    const offsetTop = document.querySelector(href).offsetTop;
+
+    scroll({
+      top: offsetTop,
+      behavior: "smooth"
+    });
+  }
+}
+
+
+</script>
